@@ -30,6 +30,7 @@ DEBUG = os.environ.get('DEBUG', 'True') == 'True'
 
 ALLOWED_HOSTS = os.environ.get('ALLOWED_HOSTS', 'localhost,127.0.0.1').split(',')
 
+ALLOWED_HOSTS = ['fraud-detection-project-0y5b.onrender.com', 'localhost', '127.0.0.1']
 
 # Application definition
 
@@ -137,6 +138,7 @@ REST_FRAMEWORK = {
 CORS_ALLOWED_ORIGINS = [
     "http://localhost:3000",  # Your local Next.js dev server
     "http://127.0.0.1:3000",  # You'll update this later
+    "https://your-frontend-domain.vercel.app",
 ]
 
 # Database configuration for PostgreSQL on Render
