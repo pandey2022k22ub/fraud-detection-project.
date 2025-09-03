@@ -139,10 +139,10 @@ REST_FRAMEWORK = {
 
 # CORS settings - Allow your frontend on Vercel to communicate with backend
 CORS_ALLOWED_ORIGINS = [
-    "http://localhost:3000",  # Your local Next.js dev server
-    "http://127.0.0.1:3000",  # You'll update this later
-    "https://your-frontend-domain.vercel.app",
-]
+    "http://localhost:3000",
+    "http://127.0.0.1:3000", 
+    "https://fraud-detection-project-kappa.vercel.app",
+]]
 
 # Database configuration for PostgreSQL on Render
 # Database configuration - Use SQLite for local dev, PostgreSQL for production
