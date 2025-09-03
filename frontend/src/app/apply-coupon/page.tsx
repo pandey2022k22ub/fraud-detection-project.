@@ -3,15 +3,31 @@
 import { useState, useEffect } from 'react';
 import { api } from '@/lib/api';
 
+// Define proper TypeScript interfaces
+interface ApiResponse {
+  success: boolean;
+  message: string;
+  discounted_amount?: number;
+  fraud_probability?: number;
+}
+
+interface FormData {
+  coupon_code: string;
+  user_email: string;
+  original_amount: string;
+  ip_address: string;
+  user_agent: string;
+}
+
 export default function ApplyCouponPage() {
-  const [formData, setFormData] = useState({
+  const [formData, setFormData] = useState<FormData>({
     coupon_code: '',
     user_email: '',
     original_amount: '',
     ip_address: '192.168.1.1',
     user_agent: '',
   });
-  const [result, setResult] = useState<any>(null);
+  const [result, setResult] = useState<ApiResponse | null>(null);
   const [loading, setLoading] = useState(false);
 
   useEffect(() => {
@@ -31,8 +47,14 @@ export default function ApplyCouponPage() {
         original_amount: parseFloat(formData.original_amount),
       });
       setResult(response.data);
-    } catch (error: any) {
-      setResult(error.response?.data || { message: 'An error occurred' });
+    } catch (error: unknown) {
+      // Proper error handling without 'any'
+      if (typeof error === 'object' && error !== null && 'response' in error) {
+        const err = error as { response?: { data?: ApiResponse } };
+        setResult(err.response?.data || { success: false, message: 'An error occurred' });
+      } else {
+        setResult({ success: false, message: 'An unknown error occurred' });
+      }
     } finally {
       setLoading(false);
     }
