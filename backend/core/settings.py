@@ -40,6 +40,7 @@ CORS_ALLOWED_ORIGINS = [
     "http://localhost:3000",
     "http://127.0.0.1:3000", 
     "https://fraud-detection-project-kappa.vercel.app",
+    "fraud-detection-project-0y5b.onrender.com"
 ]
 
 CORS_ALLOW_CREDENTIALS = True
