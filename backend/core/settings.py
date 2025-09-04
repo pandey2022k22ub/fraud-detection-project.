@@ -32,7 +32,24 @@ DEBUG = os.environ.get('DEBUG', 'True') == 'True'
 
 ALLOWED_HOSTS = os.environ.get('ALLOWED_HOSTS', 'localhost,127.0.0.1').split(',')
 
-ALLOWED_HOSTS = ['fraud-detection-project-0y5b.onrender.com', 'localhost', '127.0.0.1']
+ALLOWED_HOSTS = ['fraud-detection-project-0y5b.onrender.com', 'localhost', '127.0.0.1','fraud-detection-project-kappa.vercel.app']
+
+
+
+CORS_ALLOWED_ORIGINS = [
+    "http://localhost:3000",
+    "http://127.0.0.1:3000", 
+    "https://fraud-detection-project-kappa.vercel.app",
+]
+
+CORS_ALLOW_CREDENTIALS = True
+
+
+CORS_ALLOW_HEADERS = [
+    'content-type',
+    'authorization',
+    'x-csrftoken',
+]
 
 # Application definition
 
@@ -80,6 +97,12 @@ TEMPLATES = [
 WSGI_APPLICATION = 'core.wsgi.application'
 
 ML_SERVICE_URL = os.environ.get('ML_SERVICE_URL', 'http://localhost:8001')
+
+
+CSRF_TRUSTED_ORIGINS = [
+    "https://fraud-detection-project-0y5b.onrender.com",
+    "https://fraud-detection-project-kappa.vercel.app",
+]
 
 
 # Database
@@ -138,11 +161,7 @@ REST_FRAMEWORK = {
 }
 
 # CORS settings - Allow your frontend on Vercel to communicate with backend
-CORS_ALLOWED_ORIGINS = [
-    "http://localhost:3000",
-    "http://127.0.0.1:3000", 
-    "https://fraud-detection-project-kappa.vercel.app",
-]
+
 
 # Database configuration for PostgreSQL on Render
 # Database configuration - Use SQLite for local dev, PostgreSQL for production
