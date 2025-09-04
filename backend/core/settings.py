@@ -142,7 +142,7 @@ CORS_ALLOWED_ORIGINS = [
     "http://localhost:3000",
     "http://127.0.0.1:3000", 
     "https://fraud-detection-project-kappa.vercel.app",
-]]
+]
 
 # Database configuration for PostgreSQL on Render
 # Database configuration - Use SQLite for local dev, PostgreSQL for production
