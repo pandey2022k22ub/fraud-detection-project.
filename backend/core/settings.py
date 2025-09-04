@@ -30,7 +30,7 @@ SECRET_KEY = os.environ.get('SECRET_KEY', 'django-insecure-default-key-for-dev-o
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = os.environ.get('DEBUG', 'True') == 'True'
 
-ALLOWED_HOSTS = os.environ.get('ALLOWED_HOSTS', 'localhost,127.0.0.1').split(',')
+
 
 ALLOWED_HOSTS = ['fraud-detection-project-0y5b.onrender.com', 'localhost', '127.0.0.1','fraud-detection-project-kappa.vercel.app']
 
@@ -40,7 +40,7 @@ CORS_ALLOWED_ORIGINS = [
     "http://localhost:3000",
     "http://127.0.0.1:3000", 
     "https://fraud-detection-project-kappa.vercel.app",
-    "fraud-detection-project-0y5b.onrender.com"
+    "https://fraud-detection-project-0y5b.onrender.com"  # 
 ]
 
 CORS_ALLOW_CREDENTIALS = True
@@ -97,7 +97,7 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'core.wsgi.application'
 
-ML_SERVICE_URL = os.environ.get('ML_SERVICE_URL', 'http://localhost:8001')
+ML_SERVICE_URL = os.environ.get('ML_SERVICE_URL', 'https://fraud-detection-project-1-scgd.onrender.com')
 
 
 CSRF_TRUSTED_ORIGINS = [
@@ -166,24 +166,7 @@ REST_FRAMEWORK = {
 
 # Database configuration for PostgreSQL on Render
 # Database configuration - Use SQLite for local dev, PostgreSQL for production
-if DEBUG:
-    DATABASES = {
-        'default': {
-            'ENGINE': 'django.db.backends.sqlite3',
-            'NAME': BASE_DIR / 'db.sqlite3',
-        }
-    }
-else:
-    DATABASES = {
-        'default': {
-            'ENGINE': 'django.db.backends.postgresql',
-            'NAME': os.environ.get('DB_NAME'),
-            'USER': os.environ.get('DB_USER'),
-            'PASSWORD': os.environ.get('DB_PASSWORD'),
-            'HOST': os.environ.get('DB_HOST'),
-            'PORT': os.environ.get('DB_PORT'),
-        }
-    }
+
 
 # Redis configuration for caching and rate limiting
 CACHES = {
